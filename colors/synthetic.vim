@@ -40,6 +40,14 @@ hi Include         ctermfg=141
 hi Type            ctermfg=222
 hi StorageClass    ctermfg=141
 
+hi jsGlobalObjects     ctermfg=222
+hi jsGlobalNodeObjects ctermfg=222
+hi jsBuiltins          ctermfg=222
+hi jsFunction          ctermfg=141
+hi jsFuncName          ctermfg=222
+hi jsFuncCall          ctermfg=222
+hi jsGenerator         ctermfg=222
+
 hi markdownCode             ctermfg=156
 hi markdownH1               ctermfg=141
 hi markdownH2               ctermfg=141
