@@ -27,7 +27,7 @@ hi Number          ctermfg=122
 hi Float           ctermfg=122
 hi Identifier      ctermfg=222
 hi Function        ctermfg=222
-hi Title           ctermfg=196
+hi Title           ctermfg=255
 hi Statement       ctermfg=141
 hi Conditional     ctermfg=141
 hi Repeat          ctermfg=141
@@ -39,6 +39,9 @@ hi PreProc         ctermfg=222
 hi Include         ctermfg=141
 hi Type            ctermfg=222
 hi StorageClass    ctermfg=141
+
+hi htmlTagName        ctermfg=141
+hi htmlSpecialTagName ctermfg=141
 
 hi jsGlobalObjects     ctermfg=222
 hi jsGlobalNodeObjects ctermfg=222
