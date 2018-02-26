@@ -9,53 +9,97 @@ if exists("syntax on")
   syntax reset
 endif
 
-let g:colors_name="synthetic"
+let g:colors_name = "synthetic"
 
-hi Normal          ctermfg=249
-hi LineNr          ctermfg=234
-hi MatchParen      ctermfg=255
-hi Visual          ctermbg=233
-hi NonText         ctermfg=234
-hi SpecialKey      ctermfg=234
-hi Constant        ctermfg=122
-hi String          ctermfg=156
-hi StringDelimiter ctermfg=156
-hi Delimiter       ctermfg=156
-hi Character       ctermfg=122
-hi Boolean         ctermfg=122
-hi Number          ctermfg=122
-hi Float           ctermfg=122
-hi Identifier      ctermfg=222
-hi Function        ctermfg=222
-hi Title           ctermfg=255
-hi Statement       ctermfg=141
-hi Conditional     ctermfg=141
-hi Repeat          ctermfg=141
-hi Label           ctermfg=222
-hi Operator        ctermfg=141
-hi Keyword         ctermfg=141
-hi Comment         ctermfg=240
-hi PreProc         ctermfg=222
-hi Include         ctermfg=141
-hi Type            ctermfg=222
-hi StorageClass    ctermfg=141
+let s:black   = { "cterm16": "0",  "cterm": "0",   "gui": "#000000" }
+let s:gray    = { "cterm16": "8",  "cterm": "8",   "gui": "#333333" }
+let s:silver  = { "cterm16": "7",  "cterm": "7",   "gui": "#cccccc" }
+let s:white   = { "cterm16": "15", "cterm": "15",  "gui": "#ffffff" }
+let s:red     = { "cterm16": "1",  "cterm": "1",   "gui": "#ff6666" }
+let s:green   = { "cterm16": "2",  "cterm": "156", "gui": "#99ff99" }
+let s:yellow  = { "cterm16": "3",  "cterm": "222", "gui": "#ffcc99" }
+let s:purple  = { "cterm16": "5",  "cterm": "141", "gui": "#cc99ff" }
+let s:cyan    = { "cterm16": "6",  "cterm": "158", "gui": "#99ffcc" }
 
-hi htmlTagName        ctermfg=141
-hi htmlSpecialTagName ctermfg=141
+function! s:h(group, style)
+  execute "highlight" a:group
+    \ "ctermfg=" (has_key(a:style, "fg")    ? a:style.fg.cterm : "NONE")
+    \ "ctermbg=" (has_key(a:style, "bg")    ? a:style.bg.cterm : "NONE")
+    \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
+    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
+    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
+    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui   : "NONE")
+    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
+endfunction
 
-hi jsGlobalObjects     ctermfg=222
-hi jsGlobalNodeObjects ctermfg=222
-hi jsBuiltins          ctermfg=222
-hi jsFunction          ctermfg=141
-hi jsFuncName          ctermfg=222
-hi jsFuncCall          ctermfg=222
-hi jsGenerator         ctermfg=222
+call s:h("Normal",  { "fg": s:silver })
+call s:h("Special", { "fg": s:silver })
+call s:h("Title",   { "fg": s:silver })
 
-hi markdownCode             ctermfg=156
-hi markdownH1               ctermfg=141
-hi markdownH2               ctermfg=141
-hi markdownH3               ctermfg=141
-hi markdownH4               ctermfg=141
-hi markdownH5               ctermfg=141
-hi markdownH6               ctermfg=141
-hi markdownHeadingDelimiter ctermfg=141
+call s:h("String",    { "fg": s:green })
+call s:h("Character", { "fg": s:green })
+
+call s:h("Number",   { "fg": s:cyan })
+call s:h("Float",    { "fg": s:cyan })
+call s:h("Constant", { "fg": s:cyan })
+
+call s:h("Identifier", { "fg": s:yellow })
+call s:h("PreProc",    { "fg": s:yellow })
+call s:h("Type",       { "fg": s:yellow })
+
+call s:h("Keyword",   { "fg": s:purple })
+call s:h("Statement", { "fg": s:purple })
+
+call s:h("LineNr",     { "fg": s:gray })
+call s:h("Comment",    { "fg": s:gray })
+call s:h("NonText",    { "fg": s:gray })
+call s:h("SpecialKey", { "fg": s:gray })
+call s:h("Visual",     { "bg": s:gray })
+call s:h("MatchParen", { "fg": s:cyan })
+
+call s:h("vimFunction",      { "fg": s:purple })
+call s:h("vimFuncSID",       { "fg": s:yellow })
+call s:h("vimUserFunc",      { "fg": s:yellow })
+call s:h("vimIsCommand",     { "fg": s:yellow })
+call s:h("vimCommentString", { "fg": s:gray })
+
+call s:h("htmlTagName",        { "fg": s:purple })
+call s:h("htmlSpecialTagName", { "fg": s:purple })
+call s:h("htmlArg",            { "fg": s:yellow })
+
+call s:h("cssTagName",         { "fg": s:purple })
+call s:h("cssBraces",          { "fg": s:silver })
+call s:h("cssBackgroundProp",  { "fg": s:yellow })
+call s:h("cssPositioningProp", { "fg": s:yellow })
+call s:h("cssBoxProp",         { "fg": s:yellow })
+call s:h("cssUIProp",          { "fg": s:yellow })
+
+call s:h("sassClass",        { "fg": s:purple })
+call s:h("sassCssAttribute", { "fg": s:cyan })
+
+call s:h("jsImport",            { "fg": s:purple })
+call s:h("jsExport",            { "fg": s:purple })
+call s:h("jsExportDefault",     { "fg": s:purple })
+call s:h("jsFrom",              { "fg": s:purple })
+call s:h("jsStorageClass",      { "fg": s:purple })
+call s:h("jsFunction",          { "fg": s:purple })
+call s:h("jsFuncCall",          { "fg": s:yellow })
+call s:h("jsObjectProp",        { "fg": s:yellow })
+call s:h("jsGlobalObjects",     { "fg": s:yellow })
+call s:h("jsGlobalNodeObjects", { "fg": s:yellow })
+
+call s:h("jsonKeyword", { "fg": s:yellow })
+
+call s:h("markdownHeadingDelimiter", { "fg": s:purple })
+call s:h("markdownH1",               { "fg": s:purple })
+call s:h("markdownH2",               { "fg": s:purple })
+call s:h("markdownH3",               { "fg": s:purple })
+call s:h("markdownH4",               { "fg": s:purple })
+call s:h("markdownH5",               { "fg": s:purple })
+call s:h("markdownH6",               { "fg": s:purple })
+call s:h("markdownCode",             { "fg": s:green })
+call s:h("markdownCodeDelimiter",    { "fg": s:green })
+
+call s:h("cInclude",      { "fg": s:purple })
+call s:h("cStorageClass", { "fg": s:purple })
+call s:h("cType",         { "fg": s:purple })
