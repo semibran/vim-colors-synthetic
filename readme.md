@@ -1,7 +1,8 @@
 # vim-colors-synthetic
 > minimal vim color scheme
 
-![synthetic](screenshots/synthetic.png)
+![light](screenshots/light.png)
+![dark](screenshots/dark.png)
 
 `synthetic` is designed with the intention of minimizing the number of colors found in highlighted code snippets while still creating a worthy separation between tokens. It uses four major colors for the following purposes:
 * **purple** for keywords: statements (`return`), tags (`<h1>`), and operators (`+`, `-`, `*`, `/`)
@@ -13,4 +14,5 @@
 Copy `colors/synthetic.vim` to your `~/.vim/colors` directory, or add "semibran/vim-colors-synthetic" using a plugin manager of your choice.
 
 ## usage
+`:set background=dark`
 `:colorscheme synthetic`
