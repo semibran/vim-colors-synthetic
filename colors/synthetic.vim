@@ -44,13 +44,14 @@ call s:h("Float",    { "fg": s:cyan })
 call s:h("Constant", { "fg": s:cyan })
 
 call s:h("Identifier", { "fg": s:yellow })
-call s:h("PreProc",    { "fg": s:yellow })
 call s:h("Type",       { "fg": s:yellow })
 
 call s:h("Keyword",   { "fg": s:purple })
 call s:h("Statement", { "fg": s:purple })
+call s:h("PreProc",   { "fg": s:purple })
 
 call s:h("Error", { "bg": s:red })
+call s:h("Todo",  { "fg": s:purple })
 
 call s:h("LineNr",     { "fg": s:gray })
 call s:h("Comment",    { "fg": s:gray })
@@ -92,6 +93,19 @@ call s:h("jsGlobalNodeObjects", { "fg": s:yellow })
 call s:h("jsSpecial",           { "fg": s:cyan })
 
 call s:h("jsonKeyword", { "fg": s:yellow })
+
+call s:h("rubyInclude",          { "fg": s:purple })
+call s:h("rubyModule",           { "fg": s:purple })
+call s:h("rubyClass",            { "fg": s:purple })
+call s:h("rubyDefine",           { "fg": s:purple })
+call s:h("rubySymbol",           { "fg": s:yellow })
+call s:h("rubyInterpolation",    { "fg": s:green })
+call s:h("rubyDoBlock",          { "fg": s:purple })
+call s:h("rubyCurlyBlock",       { "fg": s:purple })
+call s:h("rubyMethodBlock",      { "fg": s:purple })
+call s:h("rubyRegexpCharClass",  { "fg": s:purple })
+call s:h("rubyRegexpQuantifier", { "fg": s:purple })
+call s:h("rubyRegexpAnchor",     { "fg": s:purple })
 
 call s:h("markdownH1",               { "fg": s:purple })
 call s:h("markdownH2",               { "fg": s:purple })
