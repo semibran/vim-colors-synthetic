@@ -89,6 +89,7 @@ call s:h("jsFuncCall",          { "fg": s:yellow })
 call s:h("jsObjectProp",        { "fg": s:yellow })
 call s:h("jsGlobalObjects",     { "fg": s:yellow })
 call s:h("jsGlobalNodeObjects", { "fg": s:yellow })
+call s:h("jsSpecial",           { "fg": s:cyan })
 
 call s:h("jsonKeyword", { "fg": s:yellow })
 
