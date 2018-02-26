@@ -15,7 +15,7 @@ let s:black   = { "cterm16": "0",  "cterm": "0",   "gui": "#000000" }
 let s:gray    = { "cterm16": "8",  "cterm": "8",   "gui": "#333333" }
 let s:silver  = { "cterm16": "7",  "cterm": "7",   "gui": "#cccccc" }
 let s:white   = { "cterm16": "15", "cterm": "15",  "gui": "#ffffff" }
-let s:red     = { "cterm16": "1",  "cterm": "1",   "gui": "#ff6666" }
+let s:red     = { "cterm16": "1",  "cterm": "160", "gui": "#ff6666" }
 let s:green   = { "cterm16": "2",  "cterm": "156", "gui": "#99ff99" }
 let s:yellow  = { "cterm16": "3",  "cterm": "222", "gui": "#ffcc99" }
 let s:purple  = { "cterm16": "5",  "cterm": "141", "gui": "#cc99ff" }
@@ -49,6 +49,8 @@ call s:h("Type",       { "fg": s:yellow })
 
 call s:h("Keyword",   { "fg": s:purple })
 call s:h("Statement", { "fg": s:purple })
+
+call s:h("Error", { "bg": s:red })
 
 call s:h("LineNr",     { "fg": s:gray })
 call s:h("Comment",    { "fg": s:gray })
@@ -90,15 +92,17 @@ call s:h("jsGlobalNodeObjects", { "fg": s:yellow })
 
 call s:h("jsonKeyword", { "fg": s:yellow })
 
-call s:h("markdownHeadingDelimiter", { "fg": s:purple })
 call s:h("markdownH1",               { "fg": s:purple })
 call s:h("markdownH2",               { "fg": s:purple })
 call s:h("markdownH3",               { "fg": s:purple })
 call s:h("markdownH4",               { "fg": s:purple })
 call s:h("markdownH5",               { "fg": s:purple })
 call s:h("markdownH6",               { "fg": s:purple })
+call s:h("markdownHeadingDelimiter", { "fg": s:purple })
 call s:h("markdownCode",             { "fg": s:green })
 call s:h("markdownCodeDelimiter",    { "fg": s:green })
+call s:h("markdownLinkText",         { "fg": s:yellow })
+call s:h("markdownBold",             { "fg": s:green })
 
 call s:h("cInclude",      { "fg": s:purple })
 call s:h("cStorageClass", { "fg": s:purple })
