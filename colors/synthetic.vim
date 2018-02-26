@@ -10,16 +10,43 @@ if exists("syntax on")
 endif
 
 let g:colors_name = "synthetic"
+let s:background = &background
 
-let s:black   = { "cterm16": "0",  "cterm": "0",   "gui": "#000000" }
-let s:gray    = { "cterm16": "8",  "cterm": "8",   "gui": "#333333" }
-let s:silver  = { "cterm16": "7",  "cterm": "7",   "gui": "#cccccc" }
-let s:white   = { "cterm16": "15", "cterm": "15",  "gui": "#ffffff" }
-let s:red     = { "cterm16": "1",  "cterm": "160", "gui": "#ff6666" }
-let s:green   = { "cterm16": "2",  "cterm": "156", "gui": "#99ff99" }
-let s:yellow  = { "cterm16": "3",  "cterm": "222", "gui": "#ffcc99" }
-let s:purple  = { "cterm16": "5",  "cterm": "141", "gui": "#cc99ff" }
-let s:cyan    = { "cterm16": "6",  "cterm": "158", "gui": "#99ffcc" }
+if &background == "dark"
+  let s:black  = { "cterm16": "0",  "cterm": "0",   "gui": "#000000" }
+  let s:gray   = { "cterm16": "8",  "cterm": "236", "gui": "#333333" }
+  let s:silver = { "cterm16": "7",  "cterm": "251", "gui": "#cccccc" }
+  let s:white  = { "cterm16": "15", "cterm": "15",  "gui": "#ffffff" }
+  let s:red    = { "cterm16": "1",  "cterm": "160", "gui": "#ff0000" }
+  let s:green  = { "cterm16": "2",  "cterm": "120", "gui": "#66ff66" }
+  let s:yellow = { "cterm16": "3",  "cterm": "222", "gui": "#ffcc99" }
+  let s:purple = { "cterm16": "5",  "cterm": "141", "gui": "#cc99ff" }
+  let s:cyan   = { "cterm16": "6",  "cterm": "158", "gui": "#99ffcc" }
+  let s:bg     = s:black
+  let s:normal = s:silver
+  let s:ignore = s:gray
+  let s:bold   = s:white
+else
+  let s:black  = { "cterm16": "0",  "cterm": "0",   "gui": "#000000" }
+  let s:gray   = { "cterm16": "8",  "cterm": "242", "gui": "#666666" }
+  let s:silver = { "cterm16": "7",  "cterm": "251", "gui": "#cccccc" }
+  let s:white  = { "cterm16": "15", "cterm": "15",  "gui": "#ffffff" }
+  let s:red    = { "cterm16": "1",  "cterm": "160", "gui": "#ff0000" }
+  let s:green  = { "cterm16": "2",  "cterm": "42",  "gui": "#00ff99" }
+  let s:yellow = { "cterm16": "3",  "cterm": "209", "gui": "#ff9966" }
+  let s:purple = { "cterm16": "5",  "cterm": "135", "gui": "#cc99ff" }
+  let s:cyan   = { "cterm16": "6",  "cterm": "80",  "gui": "#66ffcc" }
+  let s:bg     = s:white
+  let s:normal = s:gray
+  let s:ignore = s:silver
+  let s:bold   = s:black
+endif
+
+let s:keyword = s:purple
+let s:name    = s:yellow
+let s:const   = s:cyan
+let s:string  = s:green
+let s:error   = s:red
 
 function! s:h(group, style)
   execute "highlight" a:group
@@ -32,93 +59,92 @@ function! s:h(group, style)
     \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
 endfunction
 
-call s:h("Normal",  { "fg": s:silver })
-call s:h("Special", { "fg": s:silver })
-call s:h("Title",   { "fg": s:silver })
+call s:h("Normal",     { "fg": s:normal, "bg": s:bg })
+hi! link Special Normal
+hi! link Title   Normal
 
-call s:h("String",    { "fg": s:green })
-call s:h("Character", { "fg": s:green })
+call s:h("Cursor",       { "fg": s:bg, "bg": s:normal })
+call s:h("CursorLine",   {})
+call s:h("CursorLineNr", { "fg": s:bg, "bg": s:ignore })
 
-call s:h("Number",   { "fg": s:cyan })
-call s:h("Float",    { "fg": s:cyan })
-call s:h("Constant", { "fg": s:cyan })
+call s:h("Visual",     { "bg": s:ignore })
+call s:h("MatchParen", { "fg": s:bold })
+call s:h("Error",      { "fg": s:error })
 
-call s:h("Identifier", { "fg": s:yellow })
-call s:h("Type",       { "fg": s:yellow })
+call s:h("Keyword",    { "fg": s:keyword })
+hi! link Statement Keyword
+hi! link PreProc   Keyword
 
-call s:h("Keyword",   { "fg": s:purple })
-call s:h("Statement", { "fg": s:purple })
-call s:h("PreProc",   { "fg": s:purple })
+call s:h("Identifier", { "fg": s:name })
+hi! link Type Identifier
 
-call s:h("Error", { "bg": s:red })
-call s:h("Todo",  { "fg": s:purple })
+call s:h("Constant", { "fg": s:const })
+hi! link Number Constant
+hi! link Float  Constant
 
-call s:h("LineNr",     { "fg": s:gray })
-call s:h("Comment",    { "fg": s:gray })
-call s:h("NonText",    { "fg": s:gray })
-call s:h("SpecialKey", { "fg": s:gray })
-call s:h("Visual",     { "bg": s:gray })
-call s:h("MatchParen", { "fg": s:cyan })
+call s:h("String", { "fg": s:string })
+hi! link Character String
 
-call s:h("vimFunction",      { "fg": s:purple })
-call s:h("vimFuncSID",       { "fg": s:yellow })
-call s:h("vimUserFunc",      { "fg": s:yellow })
-call s:h("vimIsCommand",     { "fg": s:yellow })
-call s:h("vimCommentString", { "fg": s:gray })
+call s:h("NonText", { "fg": s:ignore })
+hi! link SpecialKey NonText
+hi! link Comment    NonText
+hi! link LineNr     NonText
 
-call s:h("htmlTagName",        { "fg": s:purple })
-call s:h("htmlSpecialTagName", { "fg": s:purple })
-call s:h("htmlArg",            { "fg": s:yellow })
+hi! link vimFunction      Keyword
+hi! link vimHiBang        Keyword
+hi! link vimFuncSID       Identifier
+hi! link vimIsCommand     Identifier
+hi! link vimUserFunc      Identifier
+hi! link vimCommentString Comment
 
-call s:h("cssTagName",         { "fg": s:purple })
-call s:h("cssBraces",          { "fg": s:silver })
-call s:h("cssBackgroundProp",  { "fg": s:yellow })
-call s:h("cssPositioningProp", { "fg": s:yellow })
-call s:h("cssBoxProp",         { "fg": s:yellow })
-call s:h("cssUIProp",          { "fg": s:yellow })
+hi! link htmlTagName        Keyword
+hi! link htmlSpecialTagName Keyword
+hi! link htmlArg            Identifier
 
-call s:h("sassClass",        { "fg": s:purple })
-call s:h("sassCssAttribute", { "fg": s:cyan })
+hi! link cssBraces           Normal
+hi! link cssTagName          Keyword
+hi! link cssPositioningProp  Identifier
+hi! link cssBackgroundProp   Identifier
+hi! link cssBoxProp          Identifier
+hi! link cssUIProp           Identifier
 
-call s:h("jsImport",            { "fg": s:purple })
-call s:h("jsExport",            { "fg": s:purple })
-call s:h("jsExportDefault",     { "fg": s:purple })
-call s:h("jsFrom",              { "fg": s:purple })
-call s:h("jsStorageClass",      { "fg": s:purple })
-call s:h("jsFunction",          { "fg": s:purple })
-call s:h("jsFuncCall",          { "fg": s:yellow })
-call s:h("jsObjectProp",        { "fg": s:yellow })
-call s:h("jsGlobalObjects",     { "fg": s:yellow })
-call s:h("jsGlobalNodeObjects", { "fg": s:yellow })
-call s:h("jsSpecial",           { "fg": s:cyan })
+hi! link sassClass        Keyword
+hi! link sassCssAttribute Constant
 
-call s:h("jsonKeyword", { "fg": s:yellow })
+hi! link jsStorageClass Keyword
+hi! link jsFunction Keyword
+hi! link jsFuncCall Identifier
+hi! link jsObjectProp Identifier
+hi! link jsGlobalObjects Identifier
+hi! link jsGlobalNodeObjects Identifier
+hi! link jsSpecial Constant
+hi! link jsonKeyword Identifier
 
-call s:h("rubyInclude",          { "fg": s:purple })
-call s:h("rubyModule",           { "fg": s:purple })
-call s:h("rubyClass",            { "fg": s:purple })
-call s:h("rubyDefine",           { "fg": s:purple })
-call s:h("rubySymbol",           { "fg": s:yellow })
-call s:h("rubyInterpolation",    { "fg": s:green })
-call s:h("rubyDoBlock",          { "fg": s:purple })
-call s:h("rubyCurlyBlock",       { "fg": s:purple })
-call s:h("rubyMethodBlock",      { "fg": s:purple })
-call s:h("rubyRegexpCharClass",  { "fg": s:purple })
-call s:h("rubyRegexpQuantifier", { "fg": s:purple })
-call s:h("rubyRegexpAnchor",     { "fg": s:purple })
+hi! link rubyInclude Keyword
+hi! link rubyModule Keyword
+hi! link rubyClass Keyword
+hi! link rubyDefine Keyword
+hi! link rubyDoBlock Keyword
+hi! link rubyCurlyBlock Keyword
+hi! link rubyMethodBlock Keyword
+hi! link rubyRegexpAnchor Keyword
+hi! link rubyRegexpQuantifier Keyword
+hi! link rubyRegexpCharClass Keyword
+hi! link rubySymbol Identifier
+hi! link rubyInterpolation String
 
-call s:h("markdownH1",               { "fg": s:purple })
-call s:h("markdownH2",               { "fg": s:purple })
-call s:h("markdownH3",               { "fg": s:purple })
-call s:h("markdownH4",               { "fg": s:purple })
-call s:h("markdownH5",               { "fg": s:purple })
-call s:h("markdownH6",               { "fg": s:purple })
-call s:h("markdownHeadingDelimiter", { "fg": s:purple })
-call s:h("markdownCode",             { "fg": s:green })
-call s:h("markdownCodeDelimiter",    { "fg": s:green })
-call s:h("markdownLinkText",         { "fg": s:yellow })
-call s:h("markdownBold",             { "fg": s:green })
+call s:h("markdownBold", { "fg": s:bold })
+hi! link markdownH1 Keyword
+hi! link markdownH2 Keyword
+hi! link markdownH3 Keyword
+hi! link markdownH4 Keyword
+hi! link markdownH5 Keyword
+hi! link markdownH6 Keyword
+hi! link markdownHeadingDelimiter Keyword
+hi! link markdownCode String
+hi! link markdownCodeDelimiter String
+hi! link markdownLinkText Identifier
 
-call s:h("cInclude",      { "fg": s:purple })
-call s:h("cStorageClass", { "fg": s:purple })
-call s:h("cType",         { "fg": s:purple })
+hi! link cInclude Keyword
+hi! link cStorageClass Keyword
+hi! link cType Keyword

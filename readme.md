@@ -7,7 +7,7 @@
 * **purple** for keywords: statements (`return`), tags (`<h1>`), and operators (`+`, `-`, `*`, `/`)
 * **yellow** for names: identifiers, keys (`foo` in `{ foo: 3 }`), functions (`bar()`)
 * **green** for string-like literals: `"baz"`, `'c'`
-* **cyan** for constants: `42`, `1.08`, `PI`
+* **cyan** for built-in constants: `42`, `1.08`, `false`
 
 ## install
 Copy `colors/synthetic.vim` to your `~/.vim/colors` directory, or add "semibran/vim-colors-synthetic" using a plugin manager of your choice.
