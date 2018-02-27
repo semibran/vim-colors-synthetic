@@ -88,6 +88,7 @@ hi! link vimSep Normal
 hi! link vimParenSep Normal
 hi! link vimFunction Function
 hi! link vimUserFunc Function
+hi! link vimOper Function
 hi! link vimCommentTitle Identifier
 
 " javascript links
