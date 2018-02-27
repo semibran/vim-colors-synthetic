@@ -31,7 +31,7 @@ let s:red    = { "cterm": "203", "gui": "#ff5f5f" }
 let s:green  = { "cterm": "156", "gui": "#afff87" }
 let s:yellow = { "cterm": "222", "gui": "#ffd787" }
 let s:purple = { "cterm": "141", "gui": "#af87ff" }
-let s:cyan   = { "cterm": "158", "gui": "#afffd7" }
+let s:cyan   = { "cterm": "123", "gui": "#87ffff" }
 
 " style definitions
 let s:normal     = { "fg": s:silver, "bg": s:black }
@@ -46,7 +46,7 @@ let s:special    = { "fg": s:cyan }
 let s:warning    = { "fg": s:black, "bg": s:yellow }
 let s:error      = { "fg": s:white, "bg": s:red }
 let s:cursor     = { "fg": s:black, "bg": s:white }
-let s:select     = { "fg": s:white, "bg": s:gray }
+let s:select     = { "bg": s:gray }
 let s:none       = {}
 
 " basic syntax highlighting declarations
@@ -99,6 +99,7 @@ hi! link jsVariableDef Identifier
 hi! link jsModuleKeyword Identifier
 hi! link jsFuncArgs Identifier
 hi! link jsNull Constant
+hi! link jsUndefined Constant
 hi! link jsFuncCall Function
 hi! link jsOperator Function
 
