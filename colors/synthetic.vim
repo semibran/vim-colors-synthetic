@@ -1,5 +1,5 @@
 " Name:       synthetic.vim
-" Version:    0.0.0
+" Version:    1.0.0
 " Maintainer: github.com/semibran
 " License:    The MIT License (MIT)
 
@@ -35,6 +35,8 @@ let s:cyan   = { "cterm": "158", "gui": "#afffd7" }
 
 " style definitions
 let s:normal     = { "fg": s:silver, "bg": s:black }
+let s:italic     = { "fg": s:cyan, "cterm": "italic", "gui": "italic" }
+let s:bold       = { "fg": s:cyan, "cterm": "bold", "gui": "bold" }
 let s:subtle     = { "fg": s:gray }
 let s:hidden     = { "fg": s:black }
 let s:statement  = { "fg": s:purple }
@@ -44,7 +46,7 @@ let s:special    = { "fg": s:cyan }
 let s:warning    = { "fg": s:black, "bg": s:yellow }
 let s:error      = { "fg": s:white, "bg": s:red }
 let s:cursor     = { "fg": s:black, "bg": s:white }
-let s:select     = { "fg": s:black, "bg": s:gray }
+let s:select     = { "fg": s:white, "bg": s:gray }
 let s:none       = {}
 
 " basic syntax highlighting declarations
@@ -53,8 +55,11 @@ call s:h("Identifier", s:identifier)
 call s:h("Constant", s:constant)
 call s:h("Function", s:special)
 call s:h("Special", s:special)
+call s:h("Title", s:special)
 call s:h("Comment", s:subtle)
 call s:h("Normal", s:normal)
+call s:h("Italic", s:italic)
+call s:h("Bold", s:bold)
 call s:h("Visual", s:select)
 call s:h("Cursor", s:cursor)
 call s:h("CursorLine", s:none)
@@ -71,6 +76,7 @@ call s:h("EndOfBuffer", s:hidden)
 " derivative links
 hi! link Keyword Statement
 hi! link PreProc Statement
+hi! link StorageClass Statement
 hi! link Type Identifier
 hi! link Number Constant
 hi! link Float Number
@@ -83,3 +89,44 @@ hi! link vimParenSep Normal
 hi! link vimFunction Function
 hi! link vimUserFunc Function
 hi! link vimCommentTitle Identifier
+
+" javascript links
+hi! link jsFunction Statement
+hi! link jsObjectKey Identifier
+hi! link jsObjectProp Identifier
+hi! link jsVariableDef Identifier
+hi! link jsModuleKeyword Identifier
+hi! link jsFuncArgs Identifier
+hi! link jsNull Constant
+hi! link jsFuncCall Function
+hi! link jsOperator Function
+
+" json links
+hi! link jsonBraces Normal
+hi! link jsonKeyword Identifier
+
+" html links
+hi! link htmlTagName Keyword
+hi! link htmlSpecialTagName Keyword
+
+" css links
+hi! link cssBraces Normal
+hi! link cssPseudoClass Special
+
+" sass links
+hi! link sassId Keyword
+hi! link sassClass Keyword
+hi! link sassProperty Identifier
+
+" markdown links
+hi! link markdownH1 Statement
+hi! link markdownH2 Statement
+hi! link markdownH3 Statement
+hi! link markdownH4 Statement
+hi! link markdownH5 Statement
+hi! link markdownH6 Statement
+hi! link markdownHeadingDelimiter Statement
+hi! link markdownLinkText Identifier
+hi! link markdownCode String
+hi! link markdownItalic Italic
+hi! link markdownBold Bold
