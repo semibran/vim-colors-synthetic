@@ -1,7 +1,7 @@
 # vim-colors-synthetic
 > minimal vim color scheme
 
-![synthetic](screenshots/synthetic.png)
+![synthetic](screenshots/preview.png)
 
 `synthetic` is designed with the intention of minimizing the number of colors found in highlighted code snippets while still creating a worthy separation between tokens. It uses four major colors for the following purposes:
 * **purple** for statements and keywords
