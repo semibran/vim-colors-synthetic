@@ -6,7 +6,7 @@
 `synthetic` is a syntax theme designed with the goal of minimizing the number of colors found in highlighted code while still maintaining a worthy visual separation between tokens.
 
 ## palette
-| color                         | hex value | purpose                                  |
+| color                         | hex value | usage                                  |
 | :---------------------------: | :-------: | :--------------------------------------- |
 | ![purple](images/purple.png)  | `#af87ff` | statements, keywords, control flow       |
 | ![yellow](images/yellow.png)  | `#ffd787` | identifiers, variables, keys, props      |
