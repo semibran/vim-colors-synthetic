@@ -85,6 +85,7 @@ hi! link Number Constant
 hi! link Float Number
 hi! link String Constant
 hi! link Character String
+hi! link Operator Function
 
 " vim links
 hi! link vimSep Normal
@@ -94,6 +95,12 @@ hi! link vimUserFunc Function
 hi! link vimOper Function
 hi! link vimCommentTitle Identifier
 hi! link vimOption Identifier
+
+" shell script links
+hi! link shRange Normal
+hi! link shFor Identifier
+hi! link shDerefSimple Identifier
+hi! link shTestOpr Operator
 
 " javascript links
 hi! link jsFunction Statement
@@ -107,8 +114,10 @@ hi! link jsFuncArgs Identifier
 hi! link jsNull Constant
 hi! link jsUndefined Constant
 hi! link jsFuncCall Function
-hi! link jsOperator Function
-hi! link jsSpreadOperator Function
+hi! link jsOperator Operator
+hi! link jsSpreadOperator Operator
+hi! link jsTemplateBraces Special
+hi! link jsEnvComment Comment
 
 " json links
 hi! link jsonBraces Normal
@@ -121,6 +130,7 @@ hi! link htmlSpecialTagName Keyword
 " css links
 hi! link cssBraces Normal
 hi! link cssPseudoClass Special
+hi! link cssMediaProp Identifier
 
 " sass links
 hi! link sassId Keyword
