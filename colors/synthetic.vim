@@ -48,7 +48,7 @@ let s:special    = { "fg": s:cyan }
 let s:warning    = { "fg": s:black, "bg": s:yellow }
 let s:error      = { "fg": s:white, "bg": s:red }
 let s:cursor     = { "fg": s:black, "bg": s:white }
-let s:highlight  = { "fg": s:white, "bg": s:onyx }
+let s:highlight  = { "fg": s:silver, "bg": s:onyx }
 let s:select     = { "bg": s:jet }
 let s:none       = {}
 
@@ -98,9 +98,19 @@ hi! link vimOption Identifier
 
 " shell script links
 hi! link shRange Normal
+hi! link shLoop Statement
 hi! link shFor Identifier
 hi! link shDerefSimple Identifier
+hi! link shStatement Constant
 hi! link shTestOpr Operator
+
+" zsh links
+hi! link zshPreProc Comment
+hi! link zshDeref Identifier
+hi! link zshDollarVar Identifier
+hi! link zshVariableDef Identifier
+hi! link zshSubst Identifier
+hi! link zshSubstDelim Operator
 
 " javascript links
 hi! link jsFunction Statement
@@ -108,7 +118,7 @@ hi! link jsArrowFunction Statement
 hi! link jsObjectKey Identifier
 hi! link jsObjectProp Identifier
 hi! link jsVariableDef Identifier
-hi! link jsDestructuringPropertyValue Identifier
+hi! link jsDestructuringBlock Identifier
 hi! link jsModuleKeyword Identifier
 hi! link jsFuncArgs Identifier
 hi! link jsNull Constant
@@ -130,7 +140,13 @@ hi! link htmlSpecialTagName Keyword
 " css links
 hi! link cssBraces Normal
 hi! link cssPseudoClass Special
+hi! link cssUIProp Identifier
+hi! link cssBoxProp Identifier
+hi! link cssPageProp Identifier
 hi! link cssMediaProp Identifier
+hi! link cssDimensionProp Identifier
+hi! link cssBackgroundProp Identifier
+hi! link cssPositioningProp Identifier
 
 " sass links
 hi! link sassId Keyword
